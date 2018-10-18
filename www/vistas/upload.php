@@ -1,43 +1,5 @@
 <?php
-/*
-$avatarOp = $_POST["avatarOp"];
 
-if (!is_null($avatarOp)) {
-    $usersFile = file(FILES . DS . "usuarios.txt");
-    setcookie("avatar", $avatarOp, time() + 7 * 24 * 60 * 60);
-
-    $usuarios = [];
-    $contraseñas = [];
-    $avatares = [];
-    $i = 0;
-
-    foreach ($usersFile as $line) {
-        $arrTemp = explode(";", $line, 3);
-        $usrTemp = "" . $arrTemp[0];
-        $passTemp = "" . $arrTemp[1];
-        $avatarTemp = "" . $arrTemp[2];
-        array_push($usuarios, $usrTemp);
-        array_push($contraseñas, $passTemp);
-        array_push($avatares, $avatarTemp);
-    }
-
-    foreach ($usuarios as $usuario) {
-        if ($usuario == $_COOKIE["user"]) {
-            $edit = "" . $usuarios[$i] . ";" . $contraseñas[$i] . ";" . $avatarOp;
-            $usersFile[$i] = $edit;
-        }
-        $i++;
-    }
-
-    $archivo = fopen(FILES . DS . "usuarios.txt", "w+");
-    foreach ($usersFile as $userWrite) {
-        fwrite($archivo, $userWrite);
-    }
-    fclose($archivo);
-
-    header('Location: /preferencias');
-}
-*/
 $target_dir = "" . AVATARESUP . DS;
 $target_file = $target_dir . basename($_FILES["avatarUp"]["name"]);
 $uploadOk = 1;
