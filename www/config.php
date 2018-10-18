@@ -1,8 +1,8 @@
 <?php
 
     define('DS', DIRECTORY_SEPARATOR);
-    define("ROOT", "/home/jose/www/proyecto");    
-    define("ROOT2", "http://proyecto.test");    
+    define("ROOT", "/home/jose/www/nba");    
+    define("ROOT2", "http://nba.test");    
     define("VISTAS", ROOT . DS . "vistas");
     define("CSS", ROOT2 . DS . "vistas" . DS . "css");
     define("IMAGENES", ROOT2 . DS ."imagenes");
