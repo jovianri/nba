@@ -1,0 +1,1 @@
+onchange -v '../www/**/*' -- sh deploy.sh

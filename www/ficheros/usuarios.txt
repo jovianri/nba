@@ -1,10 +1,3 @@
-pepe;pepito;avatar1.jpg
-
-
-
-
-
-
-
-juan;juanito;avatar2.jpg
-pedro;pepito;avatar3.jpg
+pepe;pepito;avatar1.png
+juan;$1$0U7PW9.L$PALjBqLyp1liIXaxapROF.;avatar2.png
+pedro;pedrito;avatar3.png

@@ -1,27 +1,11 @@
 <?php
+    $logged = false;
     session_start();
-
-    //conexión a la bbdd
-    try {
-        $mysql = new PDO("mysql:dbname=nba;host=localhost", "root", "alumno");
-        $mysql->exec("set names utf8");
-    } catch (PDOException $e) {
-        echo "<p>Error: Cannot connect to database server.</p>\n";
-        echo $e;
-        exit();
-    }
+    $userName = null;
+    $avatar = null;
 
     function compruebaLogin(){
-        if (isset($_COOKIE["DWS"])) {
-            $usuario = explode(";", $_COOKIE["DWS"]);
-            $_SESSION["id"] = $usuario[0];
-            $_SESSION["extensionAvatar"] = $usuario[1];
-            $_SESSION["logged"] = true;
-        } else {
-            unset($_SESSION["usuario"]);
-            unset($_SESSION["avatar"]);
-            $_SESSION["logged"] = false;
-        }
+
     }
 
     compruebaLogin();
@@ -33,16 +17,19 @@
     //parsear url
     $page = null;
     $uri = trim($_SERVER["REQUEST_URI"], "/");
+    //echo "la ruta es : $uri <br />";
 
     //buscar la ruta en el array $routes
     foreach($routes["routes"] as $currentRoute) {
         $route = trim($currentRoute["route"], "/");
+        //echo "la ruta a comparar es : $route <br />";
         $routerPattern = "#^" . preg_replace('/\\\:[a-zA-Z0-9\_\-]+/', '([a-zA-Z0-9\-\_]+)', preg_quote($route)) . "$#D";
 
         // Params values that will be assigned to there respective keys
         $matchesParams = array();
         // Check if the URI matches the current route
         if(preg_match_all($routerPattern, $uri, $matchesParams)) {
+            //echo "Econtrada";
             // Keys for the params
             $keys = array();
             $params = array();
@@ -64,6 +51,7 @@
             $page = $currentRoute["page"]; 
         }
     }
+    //echo VISTAS . DS . $page;
     //si ha encontrado la ruta, cargar la página. Si no, cargar la página de error
     if ($page == null)
         $page = $routes["error"];

@@ -2,20 +2,20 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Portada</title>
+    <title>Preferencias</title>
     <link rel="stylesheet" type="text/css" media="screen" href="<?=CSS . DS?>estilos.css" />
 </head>
-
 <body>
 <?php
-include "menu.php";
+    include "menu.php";
 ?>
 <div id="content">
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        Selecciona una imagen:
-        <input type="file" name="avatarUp">
-        <input type="submit" value="Subir y Cambiar">
-    </form>
-</div>
+    <div id="preferenciasForm">
+        <form enctype ="multipart/form-data" name="preferencias" action="/cambiaAvatar" method="post">
+            <input type="file" class="inputAuth" name="avatar" />
+            <button id="authButton" type="submit">OK</button>
+        </form>
+    </div>
+</div>    
 </body>
 </html>

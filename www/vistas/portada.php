@@ -10,7 +10,7 @@
     include "menu.php";
 ?>
 <div id="content">
-    <img src="<?= IMAGENES . DS?>escudo.jpg" />   
+    <img src="<?= IMAGENES . DS?>escudo.jpg" />  
 </div>    
 </body>
 </html>

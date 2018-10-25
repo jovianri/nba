@@ -22,30 +22,41 @@ return array(
             "page" => "jugador.php",
         ),
 
-        "login" => array(
+        "Login" => array(
             "route" => "/login",
             "page" => "login.php",
         ),
-        
+
+        "Registrarse" => array(
+            "route" => "/registrarse",
+            "page" => "registrarse.php",
+        ),
+
+        "Registrar" => array(
+            "route" => "/registrar",
+            "page" => "registrar.php",
+        ),
+
+        "compruebaLogin" => array(
+            "route" => "/compruebaLogin",
+            "page" => "compruebaLogin.php",
+        ),
+
         "logout" => array(
             "route" => "/logout",
             "page" => "logout.php",
-		),
-        
+        ),
+
         "preferencias" => array(
             "route" => "/preferencias",
             "page" => "preferencias.php",
-		),
-        
-        "upload" => array(
-            "route" => "/upload",
-            "page" => "upload.php",
-		),
-		
-		"compruebaLogin" => array(
-            "route" => "/compruebaLogin",
-            "page" => "compruebaLogin.php",
-		),
+        ),
+
+        "cambiaAvatar" => array(
+            "route" => "/cambiaAvatar",
+            "page" => "cambiaAvatar.php",
+        ),
+
     ),
     "error" => "error.php",
 );
