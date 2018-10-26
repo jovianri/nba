@@ -3,15 +3,21 @@ $user = trim($_POST["user"]);
 $password = $_POST["password"];
 $avatar = $_POST["avatar"];
 
-$passTemp = password_hash("".$password, PASSWORD_DEFAULT);
+if ($user == "" || $password == "") {
+    echo '<script>alert("Nombre de usuario o Contraseña vacios");
+    window.location.replace("/registrarse");</script>';
+}
 
-$sql = 'INSERT INTO usuarios(nombre, password, avatar) VALUES ('.$user.', '.$passTemp.', '.$avatar.');';
-echo $sql;
-try{
-    $mysql->prepare($sql)->execute();
+$passTemp = password_hash("" . $password, PASSWORD_DEFAULT);
+
+$sql = 'INSERT INTO usuarios(nombreUsuario, password, avatar) VALUES ("' . $user . '", "' . $passTemp . '", "' . $avatar . '");';
+
+try {
+    $mysql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $mysql->exec($sql);
     header('Location: /login');
-}catch(PDOException $e){
-    echo '<script>alert("Error: No se ha podido registrar.'.$e.'");
+} catch (PDOException $e) {
+    echo '<script>alert("Error: ' . $e->getMessage() . '");
     window.location.replace("/registrarse");</script>';
     die();
 }

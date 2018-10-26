@@ -12,9 +12,9 @@
 <div id="content">
     <div id="loginForm">
         <form name="registrar" action="/registrar" method="post">
-            <input type="text" class="inputAuth" name="user" placeholder="Nombre de usuario" required/>
-            <input type="password" class="inputAuth" name="password" placeholder="Password" required/>
-            <input type="password" class="inputAuth" name="avatar" placeholder="Extensión del avatar" required/>
+            <input type="text" class="inputAuth" name="user" placeholder="Nombre de usuario" require/>
+            <input type="password" class="inputAuth" name="password" placeholder="Password" require/>
+            <input type="text" class="inputAuth" name="avatar" placeholder="Extensión del avatar"/>
             <button id="authButton" type="submit">OK</button>
         </form>
     </div>
