@@ -7,7 +7,7 @@
 </head>
 <body>
 <?php
-    include "menu.php";
+include "menu.php";
 ?>
 <div id="content">
     <div id="loginForm">
@@ -18,6 +18,6 @@
             <button id="authButton" type="submit">OK</button>
         </form>
     </div>
-</div>    
+</div>
 </body>
 </html>
