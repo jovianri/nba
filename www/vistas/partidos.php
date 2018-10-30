@@ -12,13 +12,13 @@
 <div id="content">
 <select>
 <?php
-    $sql = 'SELECT * FROM partidos ORDER BY codigo';
+    $sql = 'SELECT MIN(codigo) AS codigo, temporada FROM partidos GROUP BY temporada ORDER BY codigo';
     foreach ($mysql->query($sql) as $row) {
-        echo '<option value="'.$row['codigo'].'">'.$row['equipo_local'].' VS '.$row['equipo_visitante'].'</option>';
+        echo '<option value="'.$row['temporada'].'">Temporada: '.$row['temporada'].'</option>';
     }
-
 ?>
 </select>
+<!-- usar JS para añadir los partidos-->
 </div>    
 </body>
 </html>
