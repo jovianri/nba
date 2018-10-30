@@ -12,7 +12,11 @@
 <div id="content">
 <select>
 <?php
-    echo '<option value="codigo">LvV</option>';
+    $sql = 'SELECT * FROM partidos ORDER BY codigo';
+    foreach ($mysql->query($sql) as $row) {
+        echo '<option value="'.$row['codigo'].'">'.$row['equipo_local'].' VS '.$row['equipo_visitante'].'</option>';
+    }
+
 ?>
 </select>
 </div>    
