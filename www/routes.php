@@ -57,6 +57,11 @@ return array(
             "page" => "cambiaAvatar.php",
         ),
 
+        "partidos" => array(
+            "route" => "/partidos",
+            "page" => "partidos.php",
+        ),
+
     ),
     "error" => "error.php",
 );
