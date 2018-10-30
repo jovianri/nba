@@ -11,12 +11,26 @@
 ?>
 <div id="content">
     <?php
-        $sql = 'SELECT * FROM jugadores WHERE Nombre_equipo = "Lakers" ORDER BY nombre LIMIT 5';
-        $sth = $mysql->prepare($sql);
-        $sth->execute();
-        $array = $sth->fetchAll();
         $key = $keys[0][0];
         $idjugador = $params[$key];
+        $sql = 'SELECT * FROM jugadores WHERE Nombre_equipo = "Lakers" ORDER BY nombre LIMIT 5';
+        foreach ($mysql->query($sql) as $row) {
+            if ($idjugador == $row['codigo']) {
+                echo '
+                    <img src="'.IMAGENES . DS . $row['foto'].'" style=" width: 120px; height: 180px;" />
+                    <figcaption>Nombre: '.$row['Nombre'].'</figcaption>
+                    <figcaption>Procedencia: '.$row['Procedencia'].'</figcaption>
+                    <figcaption>Altura: '.$row['Altura'].'</figcaption>
+                    <figcaption>Peso: '.$row['Peso'].'</figcaption>
+                    <figcaption>Posicion: '.$row['Posicion'].'</figcaption>
+                ';
+                
+            }
+        }
+        /*$sth = $mysql->prepare($sql);
+        $sth->execute();
+        $array = $sth->fetchAll();
+
         switch ($idjugador) {
             case $array[0]['codigo']:
                 echo '
@@ -72,7 +86,7 @@
             default:
                 # code...
                 break;
-        }
+        }*/
     ?>
 </div>    
 </body>

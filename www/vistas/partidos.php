@@ -10,9 +10,11 @@
     include "menu.php";
 ?>
 <div id="content">
-    <?php
-    
-    ?>
+<select>
+<?php
+    echo '<option value="codigo">LvV</option>';
+?>
+</select>
 </div>    
 </body>
 </html>
