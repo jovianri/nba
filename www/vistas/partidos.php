@@ -31,7 +31,7 @@ $key = $keys[0][0];
 $idtemporada = $params[$key];
 $idtemporada = str_replace("-", "/", $idtemporada);
 echo "<br><h2>Temporada: ".$idtemporada."</h2><br>";
-$sql = 'SELECT * FROM partidos WHERE temporada = "'.$idtemporada.'"';
+$sql = 'SELECT * FROM partidos WHERE temporada = "'.$idtemporada.'" AND equipo_local = "Lakers" OR equipo_visitante = "Lakers"';
 foreach ($mysql->query($sql) as $row) {
     if ($idtemporada == $row['temporada']) {
         echo '
