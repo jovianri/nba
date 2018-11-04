@@ -58,7 +58,7 @@ return array(
         ),
 
         "partidos" => array(
-            "route" => "/partidos",
+            "route" => "/partidos/:idPartido",
             "page" => "partidos.php",
         ),
 

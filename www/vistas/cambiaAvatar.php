@@ -16,18 +16,26 @@ include "menu.php";
 $cookie_data = explode(';', $_COOKIE['DWS']);
 $nameUser = $cookie_data[0];
 $avatarUser = $cookie_data[1];
-//echo $avatarUser;
+
 //subimos el nuevo avatar del usuario
 $directorio = "avatares/";
-//le quito la última letra porque inserta un carácter extraño al final
-$imagen = substr($directorio . $avatarUser, 0, -1);
-//echo $imagen;
+
+$avatarUserCompleto = "avatar".$nameUser.".".$avatarUser;
+$avatarUserNoExtension = "avatar".$nameUser;
+
+$imagen = substr($directorio . $avatarUserCompleto, 0);
+$filesP = ROOT.DS."avatares".DS.$avatarUserNoExtension.'.*';
+foreach (glob($filesP) as $file) {
+    unlink($file);
+}
+array_map('unlink', glob(AVATARES.DS.$avatarUserNoExtension));
+
 if ($_FILES["avatar"]["type"] == "image/png") {
     if (move_uploaded_file($_FILES["avatar"]["tmp_name"], $imagen)) {
         $nombreAvatar = explode('.', $_FILES["avatar"]["name"]);
         array_pop($nombreAvatar);
         $avatar = implode(".", $nombreAvatar);
-        $sql = 'INSERT INTO usuarios(foto) VALUES ("' . $nombreAvatar . '");';
+        $sql = "UPDATE usuarios SET foto = '" . $avatarUserCompleto . "' WHERE id = ".$nameUser.";";
         try {
             $mysql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $mysql->exec($sql);
