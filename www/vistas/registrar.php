@@ -2,6 +2,7 @@
 $user = trim($_POST["user"]);
 $password = $_POST["password"];
 $avatar = $_POST["avatar"];
+$avatar = str_replace(".","",$avatar);
 
 if ($user == "" || $password == "") {
     echo '<script>alert("Nombre de usuario o Contraseña vacios");
