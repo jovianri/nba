@@ -13,19 +13,16 @@
     <?php
         $key = $keys[0][0];
         $idjugador = $params[$key];
-        $sql = 'SELECT * FROM jugadores WHERE Nombre_equipo = "Lakers" ORDER BY nombre LIMIT 5';
+        $sql = 'SELECT * FROM jugadores WHERE Nombre_equipo = "Lakers" AND codigo = "'.$idjugador.'"';
         foreach ($mysql->query($sql) as $row) {
-            if ($idjugador == $row['codigo']) {
-                echo '
-                    <img src="'.IMAGENES . DS . $row['foto'].'" style=" width: 120px; height: 180px;" />
-                    <figcaption>Nombre: '.$row['Nombre'].'</figcaption>
-                    <figcaption>Procedencia: '.$row['Procedencia'].'</figcaption>
-                    <figcaption>Altura: '.$row['Altura'].'</figcaption>
-                    <figcaption>Peso: '.$row['Peso'].'</figcaption>
-                    <figcaption>Posicion: '.$row['Posicion'].'</figcaption>
-                ';
-                
-            }
+            echo '
+                <img src="'.IMAGENES . DS . $row['foto'].'" style=" width: 120px; height: 180px;" />
+                <figcaption>Nombre: '.$row['Nombre'].'</figcaption>
+                <figcaption>Procedencia: '.$row['Procedencia'].'</figcaption>
+                <figcaption>Altura: '.$row['Altura'].'</figcaption>
+                <figcaption>Peso: '.$row['Peso'].'</figcaption>
+                <figcaption>Posicion: '.$row['Posicion'].'</figcaption>
+            ';
         }
         /*$sth = $mysql->prepare($sql);
         $sth->execute();

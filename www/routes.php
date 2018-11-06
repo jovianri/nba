@@ -62,6 +62,21 @@ return array(
             "page" => "partidos.php",
         ),
 
+        "noticias" => array(
+            "route" => "/noticias",
+            "page" => "noticias.php",
+        ),
+
+        "noticia" => array(
+            "route" => "/noticia/:idNoticia",
+            "page" => "noticia.php",
+        ),
+
+        "comentar" => array(
+            "route" => "/comentar",
+            "page" => "comentar.php",
+        ),
+
     ),
     "error" => "error.php",
 );

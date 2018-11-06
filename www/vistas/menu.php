@@ -3,6 +3,7 @@
     <a href="/historia"><div class="option">Historia</div></a>
     <a href="/jugadores"><div class="option">Jugadores</div></a>
     <a href="/partidos"><div class="option">Partidos</div></a>
+    <a href="/noticias"><div class="option">Noticias</div></a>    
     <?php
         if ($_SESSION['logged']) {
     ?>
