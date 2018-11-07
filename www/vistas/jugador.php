@@ -13,7 +13,7 @@
     <?php
         $key = $keys[0][0];
         $idjugador = $params[$key];
-        $sql = 'SELECT * FROM jugadores WHERE Nombre_equipo = "Lakers" AND codigo = "'.$idjugador.'"';
+        $sql = 'SELECT * FROM jugadores WHERE Nombre_equipo = "Lakers" AND codigo = "'.$idjugador.'" LIMIT 1';
         foreach ($mysql->query($sql) as $row) {
             echo '
                 <img src="'.IMAGENES . DS . $row['foto'].'" style=" width: 120px; height: 180px;" />

@@ -8,8 +8,7 @@
         if ($_SESSION['logged']) { 
     ?>
     <div class="option" id="logged">
-        <img id="avatar" src="<?= AVATARES . DS . NOMBREAVATAR . 
-            $_SESSION['id'] . "." . $_SESSION['extensionAvatar']?>">
+        <img id="avatar" src="<?= AVATARES . DS . NOMBREAVATAR . $_SESSION['id'] . "." . $_SESSION['extensionAvatar']?>">
         <div id="loggedDialog">
             <a href="/preferencias">
                 <div class="loggedDialogOption">Preferencias</div>

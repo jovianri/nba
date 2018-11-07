@@ -14,7 +14,7 @@
         <?php
             $key = $keys[0][0];
             $idnoticia = $params[$key];
-            $sqlNoticias = 'SELECT * FROM noticias WHERE id = "'.$idnoticia.'"';
+            $sqlNoticias = 'SELECT * FROM noticias WHERE id = "'.$idnoticia.'" LIMIT 1';
             foreach ($mysql->query($sqlNoticias) as $row) {
                 echo '
                     <h1>'.$row['titulo'].'</h1>
@@ -34,7 +34,7 @@
                 }
                 $sqlComentarios = 'SELECT * FROM comentarios WHERE id_noticia = "'.$row['id'].'"';
                 foreach ($mysql->query($sqlComentarios) as $rowC) {
-                    echo '<div style="border-radius: 8px;border: 2px solid;">';
+                    echo '<div style="margin: 5px;border-radius: 8px;border: 2px solid;">';
                     $sqlUser = 'SELECT * FROM usuarios WHERE id = "'.$rowC['user'].'"';
                     foreach ($mysql->query($sqlUser) as $rowU) {
                         echo '
