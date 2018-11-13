@@ -23,9 +23,9 @@
                     ';
                 if ($_SESSION['logged']) {
                     echo '
-                        <div id="loginForm">
+                        <div id="content">
                             <form name="comentar" action="/comentar" method="post">
-                                <input type="text" class="inputAuth" name="comentario" placeholder="Comenta Aquí"/>
+                                <textarea rows="4" cols="50" name="comentario" placeholder="Comenta Aquí"></textarea>
                                 <input type="text" class="inputAuth" name="noticia" value="'.$idnoticia.'" hidden/>
                                 <button id="authButton" type="submit">OK</button>
                             </form>
@@ -37,12 +37,9 @@
                     echo '<div style="margin: 5px;border-radius: 8px;border: 2px solid;">';
                     $sqlUser = 'SELECT * FROM usuarios WHERE id = "'.$rowC['user'].'"';
                     foreach ($mysql->query($sqlUser) as $rowU) {
-                        echo '
-                            <h2>User: '.$rowU['nombreUsuario'].'</h2>
-                        ';
+                        echo '<h2>User: '.$rowU['nombreUsuario'].'</h2>';
                     }
-                    echo '
-                            <p>'.$rowC['cuerpo'].'</p>
+                    echo    '<p>'.$rowC['cuerpo'].'</p>
                             </div>
                         ';
                 }

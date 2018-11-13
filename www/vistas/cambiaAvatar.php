@@ -12,30 +12,28 @@ include "menu.php";
 <div id="content">
 
 <?php
-//sacamos el nombre del usuario y el avatar de la cookie
 $cookie_data = explode(';', $_COOKIE['DWS']);
 $nameUser = $cookie_data[0];
-$avatarUser = $cookie_data[1];
 
-//subimos el nuevo avatar del usuario
 $directorio = "avatares/";
 
-$avatarUserCompleto = "avatar".$nameUser.".".$avatarUser;
-$avatarUserNoExtension = "avatar".$nameUser;
+$extensionAvatar = explode('.', $_FILES["avatar"]["name"]);
+$avatarUserCompleto = "avatar" . $nameUser . "." . $extensionAvatar[1];
+$avatarUserNoExtension = "avatar" . $nameUser;
 
-$imagen = substr($directorio . $avatarUserCompleto, 0);
-$filesP = ROOT.DS."avatares".DS.$avatarUserNoExtension.'.*';
-foreach (glob($filesP) as $file) {
-    unlink($file);
-}
-array_map('unlink', glob(AVATARES.DS.$avatarUserNoExtension));
+$imagenUrl = substr($directorio . $avatarUserCompleto, 0);
+$filesP = ROOT . DS . "avatares" . DS . $avatarUserNoExtension . '.*';
 
-if ($_FILES["avatar"]["type"] == "image/png") {
-    if (move_uploaded_file($_FILES["avatar"]["tmp_name"], $imagen)) {
-        $nombreAvatar = explode('.', $_FILES["avatar"]["name"]);
-        array_pop($nombreAvatar);
-        $avatar = implode(".", $nombreAvatar);
-        $sql = "UPDATE usuarios SET foto = '" . $avatarUserCompleto . "' WHERE id = ".$nameUser.";";
+if (getimagesize($_FILES["avatar"]["tmp_name"]) === FALSE) {
+    echo '<script>alert("Error: Fichero incorrecto");</script>';
+    echo '<script>window.location.replace("/preferencias");</script>';
+} elseif ($_FILES["avatar"]["type"] == "image/png" || $_FILES["avatar"]["type"] == "image/jpeg") {
+    foreach (glob($filesP) as $file) {
+        unlink($file);
+    }
+    array_map('unlink', glob(AVATARES . DS . $avatarUserNoExtension));
+    if (move_uploaded_file($_FILES["avatar"]["tmp_name"], $imagenUrl)) {
+        $sql = "UPDATE usuarios SET foto = '" . $avatarUserCompleto . "' WHERE id = " . $nameUser . ";";
         try {
             $mysql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $mysql->exec($sql);

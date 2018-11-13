@@ -22,5 +22,6 @@ if (password_verify($password, $passwordBBDD)) {
     setcookie("DWS", $res[0] . ";" . $res[2], time() + (86400 * 7));
     header("location:" . ROOT2);
 } else {
-    echo "password no válido";
+    echo " password no válido";
 }
+header("location:" . ROOT2 . DS. "login");
