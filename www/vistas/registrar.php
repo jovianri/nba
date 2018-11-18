@@ -36,7 +36,7 @@ try {
     }
     echo '<script>window.location.replace("/registrarse");</script>';
 } catch (PDOException $e) {
-    echo '<script>alert("Error: ' . $e->getMessage() . '");
-    window.location.replace("/registrarse");</script>';
+    echo '<script>alert("Error: ' . $e->getMessage() . '");</script>';
+    header('Location: /registrarse');
     die();
 }
